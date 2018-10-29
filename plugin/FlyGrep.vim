@@ -33,7 +33,18 @@ let g:FlyGrep_search_tools = ['ag', 'rg', 'grep', 'pt', 'ack']
 " Enable FlyGrep statusline
 let g:FlyGrep_enable_statusline = 1
 
-command! -nargs=0 FlyGrep        call FlyGrep#open({}})
-command! -nargs=0 FlyGrepBuffers call FlyGrep#open({'files' : '@buffers'})
-command! -nargs=? FlyGrepDir     call FlyGrep#openDir(<f-args>)
-command! -nargs=* FlyGrepFiles   call FlyGrep#openFiles(<f-args>)
+""
+" @section Usage, usage
+" FlyGrep defines several commands by default:
+" 1. FlyGrep - uses default tool with default arguments (usually to search in
+"    current working directory)
+" 2. FlyGrepBuffers - run grep tool on all files open in all buffers
+" 3. FlyGrepDir - run grep tool on specified directory or the current working
+"    directory if no argument is specified
+" 4. FlyGrepFiles - run grep tool on specified files or the current file if
+"    no argument is specified
+"
+command! -nargs=0                FlyGrep        call FlyGrep#open({}})
+command! -nargs=0                FlyGrepBuffers call FlyGrep#open({'files' : '@buffers'})
+command! -nargs=? -complete=dir  FlyGrepDir     call FlyGrep#openDir(<f-args>)
+command! -nargs=* -complete=file FlyGrepFiles   call FlyGrep#openFiles(<f-args>)
