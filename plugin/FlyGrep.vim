@@ -16,17 +16,19 @@
 "
 
 ""
-" @section CONFIGURATION, config
+" @section Configuration, config
 " FlyGrep has strong default options, but you can also change the option
 " yourself.
 
 ""
-" FlyGrep will start to searching code after a delay, the default value is
+" FlyGrep will start to searching code after a delay; the default value is
 " 500ms.
 let g:FlyGrep_input_delay = 500
 
 ""
-" A list of searching tools will be userd.
+" A list of grepping tools will be consulted to perform the search. The first
+" available executable in this list will be used. By default, the list
+" contains: ['ag', 'rg', 'grep', 'pt', 'ack']
 let g:FlyGrep_search_tools = ['ag', 'rg', 'grep', 'pt', 'ack']
 
 ""

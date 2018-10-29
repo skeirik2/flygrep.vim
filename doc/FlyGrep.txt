@@ -1,10 +1,12 @@
 *FlyGrep.txt*	Fly grep in vim
 Wang Shidong                                                         *FlyGrep*
 
-==============================================================================
 CONTENTS                                                    *FlyGrep-contents*
+==============================================================================
+
   1. Introduction..............................................|FlyGrep-intro|
-  2. CONFIGURATION............................................|FlyGrep-config|
+  2. Usage.....................................................|FlyGrep-usage|
+  3. Configuration............................................|FlyGrep-config|
 
 ==============================================================================
 INTRODUCTION                                                   *FlyGrep-intro*
@@ -12,6 +14,17 @@ INTRODUCTION                                                   *FlyGrep-intro*
 Fly grep in vim, written in pure vim script for MacVim, gvim and vim version
 8.0+.
 
+==============================================================================
+USAGE                                                          *FlyGrep-usage*
+
+FlyGrep defines several commands by default:
+1. FlyGrep - uses default tool with default arguments (usually to search in
+   current working directory)
+2. FlyGrepBuffers - run grep tool on all files open in all buffers
+3. FlyGrepDir - run grep tool on specified directory or the current working
+   directory if no argument is specified
+4. FlyGrepFiles - run grep tool on specified files or the current file if
+   no argument is specified
 
 ==============================================================================
 CONFIGURATION                                                 *FlyGrep-config*
@@ -20,14 +33,15 @@ FlyGrep has strong default options, but you can also change the options
 yourself.
 
                                                        *g:FlyGrep_input_delay*
-FlyGrep will start searching code after a delay, the default value is
+FlyGrep will start searching code after a delay; the default value is
 500ms.
 
                                                       *g:FlyGrep_search_tools*
-A list of searching tools will be used.
+A list of grepping tools will be consulted to perform the search. The first
+available executable in this list will be used. By default, the list
+contains: ['ag', 'rg', 'grep', 'pt', 'ack']
 
                                                  *g:FlyGrep_enable_statusline*
 Enable FlyGrep statusline
-
 
 vim:tw=78:ts=8:ft=help:norl:
